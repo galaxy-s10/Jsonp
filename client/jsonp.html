@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="normal">原生jsonp</button>
+    <script>
+        function show(x) {
+            console.log('下面是jsonp返回的数据')
+            console.log(x)
+        }
+        var btn = document.getElementById('normal')
+        btn.onclick = function () {
+            var parent = document.body
+            var cb = document.createElement('script');
+            cb.src = "http://localhost:3000?callback=show"
+            parent.appendChild(cb)
+            parent.removeChild(parent.lastElementChild)
+        }
+    </script>
+</body>
+
+</html>
