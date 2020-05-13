@@ -11,12 +11,18 @@
 <body>
     <button id="ajax">ajax jsonp</button>
     <script>
+        function hicallback(res) {
+            console.log('hi,callback');
+            console.log(res);
+        }
         $("#ajax").click(function () {
             $.ajax({
-                url: "http://localhost:3000",
+                url: "http://localhost:3000/ajax",
                 dataType: 'jsonp',
+                jsonpCallback: 'hicallback',   //指定回调函数
+                jsonp: 'cbName',           //指定服务端的回调函数名,默认callback
                 success: function (result) {
-                    console.log('下面是jsonp返回的数据')
+                    console.log('响应成功');
                     console.log(result)
                 }
             });
